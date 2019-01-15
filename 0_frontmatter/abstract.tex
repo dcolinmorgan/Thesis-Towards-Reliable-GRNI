@@ -1,0 +1,18 @@
+% Thesis Abstract -----------------------------------------------------
+
+\begin{abstracts}
+
+Cancer is known to stem from multiple, independent mutations, the effects of which aggregate to gain control of cellular activity. Much study focuses on isolated mutations seen to be crucial markers of potential disease progression. However, this forfeits a greater sense of any single gene's causative role in the developing systemic flux. The work in this thesis concerns the relationships in and amongst many genes. Entire webs of \textbf{influence} are modeled by first systematically perturbing the system, reading its reaction as a whole, and feeding this into various methods to reverse engineer the key agents of change. By way of examining their interrelatedness, gene regulatory network (GRN) inference offers a more meaningful understanding of disease-linked components. However, in order to take action using the understanding of these regulations, they must be reliably derived.
+
+The initial study sets the groundwork for the rest, and deals with finding common ground among the sundry methods in order to compare and rank performance in an unbiased setting. The GeneSPIDER (GS) MATLAB package is an inference benchmarking platform whereby methods can be added via a wrapper for testing in competition with one another. Synthetic datasets and networks spanning a wide range of conditions can be created for this purpose. The evaluation of method across various conditions in the benchmark presented demonstrates which properties influence the accuracy of which methods, and thus which are more suitable for use under any given characterized condition.
+
+The second study introduces a novel framework for increasing inference accuracies within the GS environment by independent, nested bootstraps, \ie repeated inference trials. Under low to medium noise levels, this allows support to be gathered for links occurring most often while spurious links are discarded through comparison to an estimated null, shuffled-link distribution. While noise continues to plague every method, nested bootstrapping in this way is shown to increase the accuracy of several different methods.
+
+The third study is a small-scale test of these components on real data, which finds a reliable network for a dataset covering 40 genes perturbed in a human squamous carcinoma cell line. The methods of inference are again wrapped with NestBoot so to contain links of high support, and indeed these networks are more accurate on average than those of networks of shuffled topologies. A network of high confidence was recovered containing many links known to the literature, as well as a slew of novel links, a subset of which was found to exist in another human cancer cell line.
+
+The final study breaks from the restrictions of the synthetic datasets of the first two and the small scale of the third study to infer reliable networks on large scale, public perturbation data. Utilizing many biological datasets of a far greater scale here we seek to differentiate the networks based not only on tissue but on cancer subtype. We hope to demonstrate some semblance of a core network module necessary for disease development through quite a basic relatedness comparison but over large enough a scale to bring about insight into novel mechanisms of cancer progression.
+
+
+\end{abstracts}
+
+% ---------------------------------------------------------------------- 

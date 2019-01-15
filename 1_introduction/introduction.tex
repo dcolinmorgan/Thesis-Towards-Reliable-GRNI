@@ -1,0 +1,118 @@
+% this file is called up by thesis.tex
+% content in this file will be fed into the main document
+
+%: ----------------------- introduction file header -----------------------
+
+\graphicspath{{1_introduction/figures/}} % specifies where the figures are stored
+
+% ----------------------------------------------------------------------
+%: ----------------------- content ----------------------- 
+% ----------------------------------------------------------------------
+
+
+
+%: ----------------------- HELP: latex document organisation
+% the commands below help you to subdivide and organise your thesis
+%    \chapter{}       = level 1, top level
+%    \section{}       = level 2
+%    \subsection{}    = level 3
+%    \subsubsection{} = level 4
+% note that everything after the percentage sign is hidden from output
+
+\setcounter{page}{1}
+\chapter{Introduction} 
+
+It has been suggested that all organisms are \emph{Informavores} \citep{MARGALEF1996141}, in that they survive by consuming negative entropy. If this is indeed the case and life is preferred for its ability to increase entropy more quickly than non-life \citep{england2013statistical}, then surely the framework in which this information is stored, organized and communicated conveys much of its meaning, \ie nothing exists in isolation. The network of relations between disparate bits of information is a description of the information itself and as such must be accounted for to know the information completely. These relations are present independent of scale.
+
+Informatavores undoubtedly arose making use of some energy gradient to gather favorable molecules for some advantage, ultimately to birth longer, more stable molecules. The relationships between molecules can be summarized as a \emph{social network}, where nodes are molecules and the links connecting the network are favorable and unfavorable interactions among the molecules. Such a network would contain many of basic physiochemical laws of nature, conveying widely applicable rules in a humanly interpretable manner. Indeed, any such interplay can be organized into such node and link relationships.
+
+In the context of biological life, many such relationships are essential and their network linkages are consequently quite rigid and robust, while others have developed to be flexible and indeed highly intermittent. A network representation can accommodate for this dynamicity by tuning its component links to operate under certain (external) conditions. These parameters are coded into the network, making the composition not only a structural rulebook but also a guidebook. Life utilizes this robust flexibility for means of survival when conditions change and adaptation is necessary, and again when betting against a second change back to the original state could be as deadly as not adapting in the first place. Uncovering these abilities our natural world has developed over some 4 billion plus years is a monumental task, yet already many techniques have been developed to do just that!
+
+The natural sciences are bound by their shared ambition to uncover nature's laws. Modern research in chemistry and physics developed concurrently with the advent of modern computation, as the questions they posed birthed problems who's solutions necessitated such computation; computation in biological research was only later adapted. Classically, biologists have attempted to piece the puzzle together through isolated cause and effect experimentation, drawing upon whichever perturbation most obviously related to a phenotypic effect. For this and other reasons, biological study has lagged behind in adapting to analytical methods of study in our modern computed world. The advent firstly of reading protein primary structure follow by sequencing DNA spawned algorithms of comprehension, making sense of the information. Thus began the cycle of breakthroughs to ever deeper understanding, recently birthing high throughput quantification methods and analytic techniques, a sort of ``biomolecular digitization'' which form the foundation of much of our modern understanding. This understanding dictates, among many other things, that much as using light to observe electron activity alters that very system, so too isolation of genes from a native system deviates any behavior from its natural tendency. Ceding to yet more currently insurmountable limitations such as the artificial growth environment, the systems approach to biological inquiry aims to more accurately characterize intracellular relationships by characterizing the cell-wide regulatory behavior at once. Many tools exist within the subdomain to deduce relationships, all tuned to exploit certain aspects of any given experimental setup while largely overlooking limitations. %It remains to be seen what becomes of biological study apart from computation as this synergy portends a great many things, many the same ambitions of those investigating yesterday.
+
+A major focus of the research presented here is the undertaking of perturbation biology, wherein one pokes and prods the (sub)cellular environment systematically to gain information to its capability for robust response. Specifically the network inference process attempts to define biological flexibility and limitation separately from limitations to quantize. Differentiating between these two is the ultimate goal, relegating the former to the signal and the later to systemic noise, thereby defining and hopefully limiting their role in this reverse engineering process. Conditions under which any certain method would be more advantageously applied than another are highlighted and offer a guide for more actionable gene regulatory networks (GRN). A protocol which seeks to minimize the effects of noise in the data during the inference procedure is demonstrated to improve this process in a method independent manner under certain conditions. Primary investigation gives way to inference on a large-scale with the advantages gained from the previous simulations, returning models of oncogenic driver genes in high resolution.
+
+
+
+
+%\subsection{Name your subsection} % subsection headings are again smaller than section names
+%\subsubsection{Name your subsubsection} % subsubsection headings are again smaller than subsection names
+
+
+
+
+
+
+
+
+%Starch of plants and glycogen of animals consists of $\alpha$-1,4-glycosidic glucose polymers \cite{lastname07}. See figure \ref{largepotato} for a comparison of glucose polymer structure and chemistry. 
+
+%Two references can be placed separated by a comma \cite{lastname07,name06}.
+
+%: ----------------------- HELP: references
+% References can be links to figures, tables, sections, or references.
+% For figures, tables, and text you define the target of the link with \label{XYZ}. Then you call cross-link with the command \ref{XYZ}, as above
+% Citations are bound in a very similar way with \cite{XYZ}. You store your references in a BibTex file with a programme like BibDesk.
+
+
+
+
+
+%\figuremacro{largepotato}{A common glucose polymers}{The figure shows starch granules in potato cells, taken from \href{http://molecularexpressions.com/micro/gallery/burgersnfries/burgersnfries4.html}{Molecular Expressions}.}
+
+%: ----------------------- HELP: adding figures with macros
+% This template provides a very convenient way to add figures with minimal code.
+% \figuremacro{1}{2}{3}{4} calls up a series of commands formating your image.
+% 1 = name of the file without extension; PNG, JPEG is ok; GIF doesn't work
+% 2 = title of the figure AND the name of the label for cross-linking
+% 3 = caption text for the figure
+
+%: ----------------------- HELP: www links
+% You can also see above how, www links are placed
+% \href{http://www.something.net}{link text}
+
+	%\figuremacroW{largepotato}{Title}{Caption}{0.8}
+
+% variation of the above macro with a width setting
+% \figuremacroW{1}{2}{3}{4}
+% 1-3 as above
+% 4 = size relative to text width which is 1; use this to reduce figures
+
+
+
+
+%: ----------------------- HELP: tables
+% Directly coding tables in latex is tiresome. See below.
+% I would recommend using a converter macro that allows you to make the table in Excel and convert them into latex code which you can then paste into your doc.
+% This is the link: http://www.softpedia.com/get/Office-tools/Other-Office-Tools/Excel2Latex.shtml
+% It's a Excel template file containing a macro for the conversion.
+
+%\begin{table}[htdp]
+%\centering
+%\begin{tabular}{ccc} % ccc means 3 columns, all centered; alternatives are l, r
+
+%{\bf Gene} & {\bf GeneID} & {\bf Length} \\ 
+% & denotes the end of a cell/column, \\ changes to next table row
+%\hline % draws a line under the column headers
+
+%human latexin & 1234 & 14.9 kbps \\
+%mouse latexin & 2345 & 10.1 kbps \\
+%rat latexin   & 3456 & 9.6 kbps \\
+% Watch out. Every line must have 3 columns = 2x &. 
+% Otherwise you will get an error.
+
+%\end{tabular}
+%\caption[title of table]{\textbf{title of table} - Overview of latexin genes.}
+% You only need to write the title twice if you don't want it to appear in bold in the list of tables.
+%\label{latexin_genes} % label for cross-links with \ref{latexin_genes}
+%\end{table}
+
+
+
+% There you go. You already know the most important things.
+
+
+% ----------------------------------------------------------------------
+
+
+

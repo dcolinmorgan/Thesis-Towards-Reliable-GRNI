@@ -1,0 +1,313 @@
+\usepackage{amsmath} % Added to get math
+% \usepackage{amsthm} % Added to get theorems
+\usepackage{xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% favorite macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define different operators
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\spanv}{span}
+\DeclareMathOperator{\prank}{prank}
+\DeclareMathOperator{\erank}{erank}
+\DeclareMathOperator{\pspanv}{pspan}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\svd}{svd}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\vectorize}{vec}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\SNR}{SNR}
+\DeclareMathOperator{\MSE}{MSE}
+\DeclareMathOperator{\RSS}{RSS}
+% \DeclareMathOperator{\if}{if} % This might be used elsewhere
+% \DeclareMathOperator{\real}{Re} % Use \Re
+% \DeclareMathOperator{\imag}{Im} % Use \I
+\DeclareMathOperator{\sothat}{s.t.}
+
+% Define Probability, Expectation, Variance, Covariance, Median, Mode
+\DeclareMathOperator{\Prob}{\mathsf{P}} % Probability
+\DeclareMathOperator{\E}{\mathbf{E}} % Expectation
+\DeclareMathOperator{\var}{var} % Variance
+\DeclareMathOperator{\Var}{Var} % Variance
+\DeclareMathOperator{\cov}{cov} % Covariance
+\DeclareMathOperator{\Cov}{Cov} % Covariance
+\DeclareMathOperator{\cor}{cor} % Correlation
+\DeclareMathOperator{\Cor}{Cor} % Correlation
+\DeclareMathOperator{\Cost}{Cost} % Cost function
+\DeclareMathOperator{\mean}{mean} % Mean
+\DeclareMathOperator{\median}{median} % Median
+\DeclareMathOperator{\pdf}{\mathbf{p}} % probability density function
+\DeclareMathOperator{\df}{\mathbf{P}} % cumulative distribution function
+\DeclareMathOperator{\chisquare}{\chi^{2}} % chi-square distribution function
+\DeclareMathOperator{\invchisquare}{\chi^{-2}} % inverse chi-square distribution function
+\DeclareMathOperator{\Gammafunc}{Gamma} % Gamma function
+\DeclareMathOperator{\Binomial}{Binomial(n,p)} % Binomial distribution
+\DeclareMathOperator{\binomial}{\mathcal{B}(n,p)} % binomial distribution
+\DeclareMathOperator{\normal}{\mathcal{N}(\mu,\sigma^2)} % normal distribution
+\DeclareMathOperator{\normall}{\mathcal{N}(\mu,\lambda)} % normal distribution with lambda variance
+
+% Other
+\newcommand{\degree}{\ensuremath{^\circ}}
+\providecommand{\commentt}[1]{\emph{#1} }
+\renewcommand{\emph}{\textit} % Used to keep as italic in theorems
+\newcommand{\ie}{\emph{i.e.}\xspace}
+\newcommand{\eg}{\emph{e.g.}\xspace}
+\newcommand{\Ie}{\emph{I.e.}\xspace}
+\newcommand{\Eg}{\emph{E.g.}\xspace}
+\newcommand{\iec}{\emph{i.e.}, }
+\newcommand{\egc}{\emph{e.g.}, }
+\newcommand{\ied}{\emph{i.e\@.} }
+\newcommand{\egd}{\emph{e.g\@.} }
+\newcommand{\nb}{\emph{n.b.}, }
+\newcommand{\etc}{\emph{etc.}\xspace}
+\newcommand{\etcc}{\emph{etc.}, }
+\newcommand{\etcd}{\emph{etc\@.} }
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\etalc}{\emph{et al.}, }
+\newcommand{\etald}{\emph{et al.} }
+\newcommand{\invivo}{\emph{in vivo}\xspace}
+\newcommand{\Invivo}{\emph{In vivo}\xspace}
+\newcommand{\invitro}{\emph{in vitro}\xspace}
+\newcommand{\insilico}{\emph{in silico}\xspace}
+\newcommand{\Insilico}{\emph{In silico}\xspace}
+\newcommand{\apriori}{\emph{a priori}\xspace}
+\newcommand{\aposteriori}{\emph{a posteriori}\xspace}
+\newcommand{\Apriori}{\emph{A priori}\xspace}
+\newcommand{\Aposteriori}{\emph{A posteriori}\xspace}
+\newcommand{\aprioric}{\emph{a priori}, }
+\newcommand{\aposterioric}{\emph{a posteriori}, }
+\newcommand{\defacto}{\emph{de facto}\xspace}
+\newcommand{\perse}{\emph{per se}\xspace}
+\newcommand{\persec}{\emph{per se}, }
+\newcommand{\persed}{\emph{per se\@.} }
+\newcommand{\viceversa}{\emph{vice versa}\xspace}
+\newcommand{\yeast}{\textit{S\@. cerevisiae}\xspace}
+\newcommand{\Yeast}{\textit{Saccharomyces cerevisiae}\xspace}
+\newcommand{\coli}{\textit{E\@. coli}\xspace}
+\newcommand{\Coli}{\textit{Escherichia coli}\xspace}
+\newcommand{\lasso}{LASSO\xspace}
+\newcommand{\matlab}{MATLAB\xspace}
+\newcommand{\iid}{{i.i.d.}\ } % This command already exist in BMC class
+\providecommand{\pp}[1]{p.~#1} % Used for indicating page numbers in references
+% \providecommand{\pp}[1]{} % Used for removing page numbers in references
+\providecommand{\s}[1]{ch.~#1} % Used for indicating section/chapter numbers in references
+% \providecommand{\s}[1]{} % Used for removing section/chapter numbers in references
+\def\inv{{^{-1}}}% inverse
+\providecommand{\abs}[1]{\left\lvert#1\right\rvert} % abs
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert} % norm
+\providecommand{\bignorm}[1]{\big\lVert#1\big\rVert} % norm
+\providecommand{\Bignorm}[1]{\Big\lVert#1\Big\rVert} % norm
+\providecommand{\mnorm}[1]{\left\lVert#1\right\rVert} % matrix norm
+\providecommand{\bigmnorm}[1]{\big\lVert#1\big\rVert} % matrix norm
+\providecommand{\Bigmnorm}[1]{\Big\lVert#1\Big\rVert} % matrix norm
+\providecommand{\rv}[1]{\mathrm{#1}} % Mark of random variables
+\providecommand{\set}[1]{\mathcal{#1}} % Mark of variables denoting sets
+\providecommand{\mean}[1]{\ensuremath{\widehat{#1}}} % Mark of mean value
+\providecommand{\subs}[1]{\ensuremath{\textrm{#1}}} % Mark of substrates
+\providecommand{\conc}[1]{\ensuremath{\left[{#1}\right]}} % Mark of concentration
+\providecommand{\figvar}[1]{\ensuremath{\mathsf{#1}}} % Mark figure variables
+\renewcommand{\breve}{} % Used to remove the breve marks
+\def\pb{\\*[0.42cm]}
+
+% Vector marker
+\def\b0{{\boldsymbol{0}}}
+\def\bA{{\boldsymbol{A}}}
+\def\ba{{\boldsymbol{a}}}
+\def\bB{{\boldsymbol{B}}}
+\def\bb{{\boldsymbol{b}}}
+\def\bC{{\boldsymbol{C}}}
+\def\bc{{\boldsymbol{c}}}
+\def\bD{{\boldsymbol{D}}}
+\def\bd{{\boldsymbol{d}}}
+\def\bE{{\boldsymbol{E}}}
+\def\be{{\boldsymbol{e}}}
+\def\bF{{\boldsymbol{F}}}
+\def\bbf{{\boldsymbol{f}}}
+\def\bG{{\boldsymbol{G}}}
+\def\bg{{\boldsymbol{g}}}
+\def\bH{{\boldsymbol{H}}}
+\def\bh{{\boldsymbol{h}}}
+\def\bI{{\boldsymbol{I}}}
+\def\bi{{\boldsymbol{i}}}
+\def\bJ{{\boldsymbol{J}}}
+\def\bj{{\boldsymbol{j}}}
+\def\bK{{\boldsymbol{K}}}
+\def\bk{{\boldsymbol{k}}}
+\def\bL{{\boldsymbol{L}}}
+\def\bl{{\boldsymbol{l}}}
+\def\bM{{\boldsymbol{M}}}
+\def\bm{{\boldsymbol{m}}}
+\def\bN{{\boldsymbol{N}}}
+\def\bn{{\boldsymbol{n}}}
+\def\bO{{\boldsymbol{O}}}
+\def\bo{{\boldsymbol{o}}}
+\def\bP{{\boldsymbol{P}}}
+\def\bp{{\boldsymbol{p}}}
+\def\bQ{{\boldsymbol{Q}}}
+\def\bq{{\boldsymbol{q}}}
+\def\bR{{\boldsymbol{R}}}
+\def\br{{\boldsymbol{r}}}
+\def\bs{{\boldsymbol{s}}}
+\def\bS{{\boldsymbol{S}}}
+\def\bT{{\boldsymbol{T}}}
+\def\bt{{\boldsymbol{t}}}
+\def\bU{{\boldsymbol{U}}}
+\def\bu{{\boldsymbol{u}}}
+\def\bV{{\boldsymbol{V}}}
+\def\bv{{\boldsymbol{v}}}
+\def\bW{{\boldsymbol{W}}}
+\def\bw{{\boldsymbol{w}}}
+\def\bx{{\boldsymbol{x}}}
+\def\bX{{\boldsymbol{X}}}
+\def\bY{{\boldsymbol{Y}}}
+\def\by{{\boldsymbol{y}}}
+\def\bZ{{\boldsymbol{Z}}}
+\def\bz{{\boldsymbol{z}}}
+
+\def\balpha{{\boldsymbol{\alpha}}}
+\def\bbeta{{\boldsymbol{\beta}}}
+\def\bgamma{{\boldsymbol{\gamma}}}
+\def\bdelta{{\boldsymbol{\delta}}}
+\def\bepsilon{{\boldsymbol{\epsilon}}}
+\def\bvarepsilon{{\boldsymbol{\varepsilon}}}
+\def\bzeta{{\boldsymbol{\zeta}}}
+\def\boldeta{{\boldsymbol{\eta}}}
+\def\btheta{{\boldsymbol{\theta}}}
+\def\bvartheta{{\boldsymbol{\vartheta}}}
+\def\biota{{\boldsymbol{\iota}}}
+\def\bkappa{{\boldsymbol{\kappa}}}
+\def\blambda{{\boldsymbol{\lambda}}}
+\def\bmu{{\boldsymbol{\mu}}}
+\def\bnu{{\boldsymbol{\nu}}}
+\def\bxi{{\boldsymbol{\xi}}}
+\def\bpi{{\boldsymbol{\pi}}}
+\def\bvarpi{{\boldsymbol{\varpi}}}
+\def\brho{{\boldsymbol{\rho}}}
+\def\bvarrho{{\boldsymbol{\varrho}}}
+\def\bsigma{{\boldsymbol{\sigma}}}
+\def\bvarsigma{{\boldsymbol{\varsigma}}}
+\def\btau{{\boldsymbol{\tau}}}
+\def\bupsilon{{\boldsymbol{\upsilon}}}
+\def\bphi{{\boldsymbol{\phi}}}
+\def\bvarphi{{\boldsymbol{\varphi}}}
+\def\bchi{{\boldsymbol{\chi}}}
+\def\bpsi{{\boldsymbol{\psi}}}
+\def\bomega{{\boldsymbol{\omega}}}
+\def\bGamma{{\boldsymbol{\Gamma}}}
+\def\bDelta{{\boldsymbol{\Delta}}}
+\def\bTheta{{\boldsymbol{\Theta}}}
+\def\bLambda{{\boldsymbol{\Lambda}}}
+\def\bXi{{\boldsymbol{\Xi}}}
+\def\bPi{{\boldsymbol{\Pi}}}
+\def\bSigma{{\boldsymbol{\Sigma}}}
+\def\bUpsilon{{\boldsymbol{\Upsilon}}}
+\def\bPhi{{\boldsymbol{\Phi}}}
+\def\bPsi{{\boldsymbol{\Psi}}}
+\def\bOmega{{\boldsymbol{\Omega}}}
+
+% Matrix marker
+\def\m0{{\boldsymbol{0}}}
+\def\mA{{\boldsymbol{A}}}
+\def\ma{{\boldsymbol{a}}}
+\def\mB{{\boldsymbol{B}}}
+\def\mb{{\boldsymbol{b}}}
+\def\mC{{\boldsymbol{C}}}
+\def\mc{{\boldsymbol{c}}}
+\def\mD{{\boldsymbol{D}}}
+\def\md{{\boldsymbol{d}}}
+\def\mE{{\boldsymbol{E}}}
+\def\me{{\boldsymbol{e}}}
+\def\mF{{\boldsymbol{F}}}
+\def\mf{{\boldsymbol{f}}}
+\def\mG{{\boldsymbol{G}}}
+\def\mg{{\boldsymbol{g}}}
+\def\mH{{\boldsymbol{H}}}
+\def\mh{{\boldsymbol{h}}}
+\def\mI{{\boldsymbol{I}}}
+\def\mi{{\boldsymbol{i}}}
+\def\mJ{{\boldsymbol{J}}}
+\def\mj{{\boldsymbol{j}}}
+\def\mK{{\boldsymbol{K}}}
+\def\mk{{\boldsymbol{k}}}
+\def\mL{{\boldsymbol{L}}}
+\def\ml{{\boldsymbol{l}}}
+\def\mM{{\boldsymbol{M}}}
+\def\mm{{\boldsymbol{m}}}
+\def\mN{{\boldsymbol{N}}}
+\def\mn{{\boldsymbol{n}}}
+\def\mO{{\boldsymbol{O}}}
+\def\mo{{\boldsymbol{o}}}
+\def\mP{{\boldsymbol{P}}}
+\def\mp{{\boldsymbol{p}}}
+\def\mQ{{\boldsymbol{Q}}}
+\def\mq{{\boldsymbol{q}}}
+\def\mR{{\boldsymbol{R}}}
+\def\mr{{\boldsymbol{r}}}
+\def\ms{{\boldsymbol{s}}}
+\def\mS{{\boldsymbol{S}}}
+\def\mT{{\boldsymbol{T}}}
+\def\mt{{\boldsymbol{t}}}
+\def\mU{{\boldsymbol{U}}}
+\def\muu{{\boldsymbol{u}}}
+\def\mV{{\boldsymbol{V}}}
+\def\mv{{\boldsymbol{v}}}
+\def\mW{{\boldsymbol{W}}}
+\def\mw{{\boldsymbol{w}}}
+\def\mx{{\boldsymbol{x}}}
+\def\mX{{\boldsymbol{X}}}
+\def\mY{{\boldsymbol{Y}}}
+\def\my{{\boldsymbol{y}}}
+\def\mZ{{\boldsymbol{Z}}}
+\def\mz{{\boldsymbol{z}}}
+
+\def\malpha{{\boldsymbol{\alpha}}}
+\def\mbeta{{\boldsymbol{\beta}}}
+\def\mgamma{{\boldsymbol{\gamma}}}
+\def\mdelta{{\boldsymbol{\delta}}}
+\def\mepsilon{{\boldsymbol{\epsilon}}}
+\def\mvarepsilon{{\boldsymbol{\varepsilon}}}
+\def\mzeta{{\boldsymbol{\zeta}}}
+\def\mateta{{\boldsymbol{\eta}}}
+\def\mtheta{{\boldsymbol{\theta}}}
+\def\mvartheta{{\boldsymbol{\vartheta}}}
+\def\miota{{\boldsymbol{\iota}}}
+\def\mkappa{{\boldsymbol{\kappa}}}
+\def\mlambda{{\boldsymbol{\lambda}}}
+\def\mmu{{\boldsymbol{\mu}}}
+\def\mnu{{\boldsymbol{\nu}}}
+\def\mxi{{\boldsymbol{\xi}}}
+\def\mpi{{\boldsymbol{\pi}}}
+\def\mvarpi{{\boldsymbol{\varpi}}}
+\def\mrho{{\boldsymbol{\rho}}}
+\def\mvarrho{{\boldsymbol{\varrho}}}
+\def\msigma{{\boldsymbol{\sigma}}}
+\def\mvarsigma{{\boldsymbol{\varsigma}}}
+\def\mtau{{\boldsymbol{\tau}}}
+\def\mupsilon{{\boldsymbol{\upsilon}}}
+\def\mphi{{\boldsymbol{\phi}}}
+\def\mvarphi{{\boldsymbol{\varphi}}}
+\def\mchi{{\boldsymbol{\chi}}}
+\def\mpsi{{\boldsymbol{\psi}}}
+\def\momega{{\boldsymbol{\omega}}}
+\def\mGamma{{\boldsymbol{\Gamma}}}
+\def\mDelta{{\boldsymbol{\Delta}}}
+\def\mTheta{{\boldsymbol{\Theta}}}
+\def\mLambda{{\boldsymbol{\Lambda}}}
+\def\mXi{{\boldsymbol{\Xi}}}
+\def\mPi{{\boldsymbol{\Pi}}}
+\def\mSigma{{\boldsymbol{\Sigma}}}
+\def\mUpsilon{{\boldsymbol{\Upsilon}}}
+\def\mPhi{{\boldsymbol{\Phi}}}
+\def\mPsi{{\boldsymbol{\Psi}}}
+\def\mOmega{{\boldsymbol{\Omega}}}
+
+% Symbols for number sets
+\def\bmF{{\mathbb{F}}}
+\def\bmR{{\mathbb{R}}}
+\def\bmC{{\mathbb{C}}}
+\def\bmZ{{\mathbb{Z}}}
+\def\bmN{{\mathbb{N}}}
