@@ -80,6 +80,25 @@ to minimize the residuals between the experimental measurements and the line whe
 % \end{equation}
 %  \myequations{RNI}
 
+Issues of scaling have since arisen as we have pushed to include more genes into our GRN. Specifically, we have noted a lack of regularization in our LSCO implementation which has led to our reliance on LASSO, described in \cref{sec:reg}, which begets mega-hub regulator genes unrealistic in biologic systems. This is an ongoing and quite interesting problem to have stumbled upon, and results are unpublished \href{fig:scaling}, \href{fig:hubiness}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.75\linewidth]{3/MCF7_cell_line.eps}
+\caption{{\textbf Summary comparing max regulatory hub size as geneset is reducted.} Networks were cataloged when the average sparsity ranged between two to four links per node. Note that rank and size being equal present overlapping lines, and thus only green is plotted.
+}
+\label{fig:scaling}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.75\linewidth]{3/hubineess.eps}
+\caption{{\textbf Individual cell line regulatory link histogram comparison at N=300}. LASSO returns GRN of sparsity 3.433 while LSCO returns LSCO of 2.5.
+}
+\label{fig:hubiness}
+\end{figure}
+
+
+
 
 % Linear ODE- Least squares with penalty
 % LASSO/ridge (L1,L2), Elastic net
