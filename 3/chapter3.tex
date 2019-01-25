@@ -84,7 +84,7 @@ Issues of scaling have since arisen as we have pushed to include more genes into
 \begin{figure}[H]
 \centering
 \includegraphics[width=.75\linewidth]{3/MCF7_cell_line.eps}
-\caption{{\textbf Summary comparing max regulatory hub size as geneset is reducted.} Networks were cataloged when the average sparsity ranged between two to four links per node. Note that rank and size being equal present overlapping lines, and thus only green is plotted.
+\caption{{\textbf Summary comparing the maximum regulatory hub size as the MCF7 gene list is reduced.} Networks were cataloged when the average sparsity ranged between two to four links per node by both methods of inference. Note that rank and size being equal present overlapping lines, and thus only green is plotted. MCF7 is used as an illustrative example, however, this trend is present in all 11 tested L1000 cell lines as well as synthetic datasets.
 }
 \label{fig:scaling}
 \end{figure}
@@ -92,7 +92,7 @@ Issues of scaling have since arisen as we have pushed to include more genes into
 \begin{figure}[H]
 \centering
 \includegraphics[width=.75\linewidth]{3/hubineess.eps}
-\caption{{\textbf Individual cell line regulatory link histogram comparison at N=300}. LASSO returns GRN of sparsity 3.433 while LSCO returns LSCO of 2.5.
+\caption{{\textbf Individual cell line regulatory link histogram comparison.} MCF7 with 300 genes (N) is shown as an illustrative example; this trend extends to 11 large L1000 cell lines as well as synthetic test data. LASSO returns GRN of sparsity 3.433 (a, short for $\alpha$) while LSCO returns GRN of sparsity 2.5.
 }
 \label{fig:hubiness}
 \end{figure}
