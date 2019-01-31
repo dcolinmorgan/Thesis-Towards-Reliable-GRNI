@@ -1,4 +1,4 @@
-\externaldocument{4/chapter4.tex}
+% \externaldocument{4/chapter4.tex}
 \section{Systems Dynamics}
 \label{sec:sysdyn}
 The modern understanding of biology has grown concomitantly with the means and methods by which to characterize every deeper and with more resolution the various biological levels of organization, \ie tissues, cells, organelles, protein structures, \etc. This is made possible, in part by developments in biophysics and biochemistry which usher in ever more fine grained probing technologies \cref{sec:bioreg}. % Inter- or intra- relationships between subgroup members can utilize analytical techniques from other disciplines and need not be reinvented. 
@@ -19,8 +19,8 @@ In the landmark paper of its kind, Gardner \etal \cite{gardner2003inferring} off
 \subsection{Regulation is as much about \emph{what} as it is \emph{when}}
 \label{sec:regwhatwhen}
 Dynamics is in its most basic form a study of what and when -- by how much has any given system element changed over any given element of time. Determining these rates of change is the primary concern of experimental biologist wishing to better understand their investigative niche, for example. Together these niche experts can bind their individual biomolecules of interest together into a system using equations defining their rates of change in relation to one another using a \textbf{system of equations}. As with all models, there is a trade-off between the accuracy of your model and the complexity. The simpler the equations, \ie the fewer parameters and lower the complexity, the fewer degrees of freedom and by extension the fewer data points are needed to recreate the observed behavior compared to the more complex alternative. However, description of the given system can vary in appreciable ways depending on the modeling paradigm adapted. 
-\textbf{Nonlinearity} presents the potential for higher resolution, but risks misrepresenting underlying biology by overfitting to input data. Nonlinear models might be especially useful for modeling the robust capabilities of many natural systems, \eg modeling diauxic growth of \coli on glucose and lactose \cite{wong1997mathematical} where the main concern of the investigator is metabolite levels over time. 
-Work has also been done to show that nonlinear systems, in which there is no proportional relationship between a given input and its effect on the systems output, can be approximated fairly well using the simpler linear models when the system is in steady state \citep{wildenhain2006reconstructing}. \textbf{Linear} relationships enable simplification at the cost of reflecting abstractions of truth. Simplifying the exemplified model to linearity might mean diminishing focus on individual metabolite levels and simply accounting for survival, \eg noting any lag period indicative of the bacterium adjusting to the new environmental variables.
+\textbf{Nonlinearity} presents the potential for higher resolution, but risks misrepresenting underlying biology by overfitting to input data. Systems by definition are closed, and as such, stability is born in the balance of growth and death, where degradation prevents system-wide collapse due to runaway growth\cite{alon2007design}. This can be carried out through feedback or feed forward mechanisms (see \cref{sec:pat}), alerting the system to the dangers of blindly continuing its present course without adaptation. Nonlinear models might be especially useful for modeling the robust capabilities of many natural systems to host multiple stable, \emph{steady states}, where overall change is null, \eg modeling diauxic growth of \coli on glucose and lactose \cite{wong1997mathematical} where the model must encompass for similar growth function under the presence of separate metabolite, see \cref{sec:stab}. 
+Work has also been done to show that nonlinear systems, in which there is no proportional relationship between a given input and its effect on the systems output, can be approximated fairly well using the simpler linear models when the system finds a single steady state \citep{wildenhain2006reconstructing, crampin2006system}.  \textbf{Linear} relationships enable simplification at the cost of reflecting abstractions of truth. Simplifying the exemplified model to linearity might mean diminishing focus on individual metabolite levels and simply accounting for survival, \eg noting any lag period indicative of the bacterium trying to adjust to any limited resource before initiating death phase.
 
 
 \subsection{Parameter Estimation}
@@ -33,7 +33,7 @@ A prerequisite to modeling any system is a means of mapping two sets of variable
 \end{equation}
 % \myequations{Linear Map}
 
-where the independent measurements Y map to the known experimental design P to solve for a GRN structure, A, which explains both while also accounting for systematic and model error, E \& F. The model parameters we are solving for facilitate the mapping of variables to one another as defined by our input measurements, \ie an inverse problem, which we resort to solving using modern methods. Many methods can solve this problem, but an optimal minimum-variance, unbiased estimator (MVUE) for sufficiently large datasets remains largely elusive \citep{kay1993fundamentals}. As such, presented next are several methods which compete for the title of least bias and most accuracy. As one may guess, there are trade-offs between them which require the survival of the others, \ie no universal winner.
+where the independent measurements Y map to the known experimental design P to solve for a GRN structure, A, which explains both while also accounting for systematic and model error, E \& F. As such, the rate of change defining the system's assumed steady state (after perturbation) is calculated as the sum effect of all other regulators for the gene. The model parameters we are solving for facilitate the mapping of variables to one another as defined by our input measurements, \ie an inverse problem, which we resort to solving using modern methods. Many methods can solve this problem, but an optimal minimum-variance, unbiased estimator (MVUE) for sufficiently large datasets remains largely elusive \citep{kay1993fundamentals}. As such, presented next are several methods which compete for the title of least bias and most accuracy. As one may guess, there are trade-offs between them which require the survival of the others, \ie no universal winner.
 
 
 
@@ -79,20 +79,19 @@ to minimize the residuals between the experimental measurements and the line whe
 % \end{equation}
 %  \myequations{RNI}
 
-Recently, issues of scaling have since arisen as we have pushed to include more genes into our GRN. Specifically, we have noted a lack of regularization in our LSCO implementation which has led to our reliance on LASSO, described in \cref{sec:reg}, which begets mega-hub regulator genes unrealistic in biologic systems. This is an ongoing and quite interesting problem to have stumbled upon, and results are unpublished (\cref{fig:scaling}, \cref{fig:hubiness}). While the results are quite conclusive and broad-spanning (both in cases of synthetic and real datasets), no solution has yet been implemented.
-\begin{figure}[H]
-\centering
-\includegraphics[width=.75\linewidth]{3/MCF7_cell_line.eps}
-\caption{{\textbf Summary comparing the maximum regulatory hub size as the MCF7 gene list is reduced.} Networks were cataloged when the average sparsity ranged between two to four links per node by both methods of inference. Note that rank and size being equal present overlapping lines, and thus only green is plotted. MCF7 is used as an illustrative example, however, this trend is present in all 11 tested L1000 cell lines as well as synthetic datasets.
-}
-\label{fig:scaling}
-\end{figure}
+Recently, issues of scaling have since arisen as we have pushed to include more genes into our GRN. Specifically, we have hypothesize the lack of regularization in our LSCO implementation, which has led to our reliance on LASSO, described in \cref{sec:reg}, begets mega-hub regulator genes unrealistic in biologic systems \cref{fig:hubiness}. While there is undeniable bias in both methods, the extent to which LASSO creates unwarranted hubs of degree 30 is 10 fold less than that of LSCO at degree 250+. This is an ongoing and quite interesting problem to have stumbled upon, and results are unpublished. While the results are quite conclusive and broad-spanning (both in cases of synthetic and real datasets), no solution has yet been implemented.
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=.75\linewidth]{3/MCF7_cell_line.eps}
+% \caption{\textbf{Summary comparing the maximum regulatory hub size as the MCF7 gene list is reduced.} Networks were cataloged when the average sparsity ranged between two to four links per node by both methods of inference. Note that rank and size being equal present overlapping lines, and thus only green is plotted. MCF7 is used as an illustrative example, however, this trend is present in all 11 tested L1000 cell lines as well as synthetic datasets.
+% }
+% \label{fig:scaling}
+% \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.75\linewidth]{3/hubineess.eps}
-\caption{{\textbf Individual cell line regulatory link histogram comparison.} MCF7 with 300 genes (N) is shown as an illustrative example; this trend extends to 11 large L1000 cell lines as well as synthetic test data. LASSO returns GRN of sparsity 3.433 (a, short for $\alpha$) while LSCO returns GRN of sparsity 2.5.
-}
+\includegraphics[width=1\linewidth]{3/hubs.eps}
+\caption{\textbf{GRN node degree distributions per method.} A synthetic 1000 gene (N) network was created, where the true sparsity is $\alpha$=3.89, data synthesized and GRN inferred using both LSCO and LASSO, with sparsities chosen to match this truth as close as possible, at $\alpha$=3.978 and $\alpha$=3.676, respectively.}
 \label{fig:hubiness}
 \end{figure}
 
@@ -101,9 +100,9 @@ Recently, issues of scaling have since arisen as we have pushed to include more 
 
 % Linear ODE- Least squares with penalty
 % LASSO/ridge (L1,L2), Elastic net
-\subsection{Regularization}
+\subsection{Regularization, OR penalized Regression}
 \label{sec:reg}
-Similar in aim but more capable when confronted with collinearity or seeking sparse solutions, several competing \emph{regularization} approaches exist, each with strengths, which under the right circumstances may outweigh any limitations \cite[p.69-73,661-668]{friedman2001elements}. LASSO (short for (least absolute shrinkage and selection operator) (\cref{eq:linLASSO},\cite{tibshirani1996regression}), ridge regression (also known as Tikhonov regularization, \cref{eq:ridge} \cite{hoerl1970ridge}) and elastic-net (\cref{eq:EL}\cite{zou2005regularization}) are, in effect, similar but distinct ways of minimizing this distance between matrices when regressing, summarized in \cref{table:regularization}. While elastic-net seeks to exploit strengths of both to overcome their individual weaknesses, lasso somewhat erratically picks one variable over the other, while ridge shrinks them towards one another for a more consistent, reproducible result.
+Similar in aim but more capable when confronted with collinearity or seeking sparse solutions, several competing \emph{regularization} approaches exist, each with strengths, which under the right circumstances may outweigh any limitations \cite[p.69-73,661-668]{friedman2001elements}. LASSO (short for (least absolute shrinkage and selection operator) (\cref{eq:linLASSO},\cite{tibshirani1996regression}), Ridge Regression (also known as Tikhonov regularization, \cref{eq:ridge} \cite{hoerl1970ridge}) and Elastic-Net (El-Net) (\cref{eq:EL}\cite{zou2005regularization}) are, in effect, similar but distinct ways of minimizing this distance between matrices when regressing, summarized in \cref{table:regularization}. While elastic-net seeks to exploit strengths of both to overcome their individual weaknesses, lasso somewhat erratically picks one variable over the other, while ridge shrinks them towards one another for a more consistent, reproducible result \cite{ng2004feature}.
 
 %  \begin{subequations}
 %  \begin{equation}
@@ -114,18 +113,18 @@ Similar in aim but more capable when confronted with collinearity or seeking spa
 %  \myequations{LASSO}
  \begin{equation}\label{eq:linLASSO}
  %\argmin_{\mA} \frac{1}{2m} \norm{\mA_i\mY^T+\mP^T_i}^2_F + \zeta \norm{\mA}_1 %\citep{Glmnet-LASSO}
-  \hat{A}_{\textrm{L}}(\tilde{\zeta}) = \arg in_{A} ||A Y+P||_{l_2} + \tilde{\zeta} ||A||_{l_1},
+  \hat{A}_{\textrm{LASSO}}(\tilde{\zeta}) = \arg \min_{A} ||A Y+P||^2_{L_2} + \tilde{\zeta} ||A||_{L_1},
 \end{equation}
 
  \begin{equation}\label{eq:ridge}
-  \hat{A}_{\textrm{R}}(\tilde{\zeta}) = \arg in_{A} ||A Y+P||_{l_2} + \tilde{\zeta} ||A||_{l_2},
+  \hat{A}_{\textrm{Ridge}}(\tilde{\zeta}) = \arg \min_{A} ||A Y+P||^2_{L_2} + \tilde{\zeta} ||A||^2_{L_2},
 \end{equation}
 
  \begin{equation}\label{eq:EL}
-  \hat{A}_{\textrm{EN}}(\tilde{\zeta}) = \arg in_{A} ||A Y+P||_{l_2} + \tilde{\zeta} ||A||_{l_1}+ \tilde{\zeta} ||A||_{l_2},
+  \hat{A}_{\textrm{El-Net}}(\tilde{\zeta}) = \arg \min_{A} ||A Y+P||^2_{L_2} + \tilde{\zeta} ||A||_{L_1}+ \tilde{\zeta} ||A||^2_{L_2},
 \end{equation}
 
-Whereas least squares \cref{eq:LSCO} returns an estimate of fit for all variables which results in models which suffer from poor generalizability or issues of over fitting, regularization methods use a penalization in the form of a \textbf{cost function} to solve \emph{ill-posed} \cref{sec:calc} problems such as our inverse problem of inferring GRN from expression and design matrices.
+Whereas least squares \cref{eq:LSCO} returns an estimate of fit for all variables which results in models which suffer from poor generalizability or issues of over fitting, regularization methods use a penalization in the form of a \textbf{cost function} to solve \emph{ill-posed} \cref{sec:calc} problems such as our inverse problem of inferring GRN from expression and design matrices. Choosing the right model returned by LASSO or Elastic-Net then becomes a game of comparing predictions to some ground truth, usually left-out training data, \ie via cross-validation referenced in \cref{sec:calc},\cref{sec:acc}.
 
 \begin{table}[H]
 \begin{tabular}{|l|l|l|l}
