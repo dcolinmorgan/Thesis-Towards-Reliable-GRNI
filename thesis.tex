@@ -100,7 +100,7 @@
 
 % : ----------------------- Generate cover page ------------------------
 
-\maketitle  % command to print the title page with above variables
+% \maketitle  % command to print the title page with above variables
 
 
 %: ----------------------- Cover page back side ------------------------
@@ -110,7 +110,7 @@
 
 \input{0_frontmatter/abstract} % Uncomment to input the abstract if you want to have it printed.
 
-\phantom{.}
+% \phantom{.}
 
 % \vspace{\stretch{1}}
 
@@ -150,8 +150,6 @@
 \tableofcontents            % print the table of contents
 % levels are: 0 - chapter, 1 - section, 2 - subsection, 3 - subsubsection
 
-
-
 %: ----------------------- Abbreviations ------------------------
 
 % Tie in external source file for definitions: /0_frontmatter/abbreviations.tex
@@ -159,7 +157,9 @@
 % To create the glossary run "makeindex thesis.nlo  -s nomencl.ist -o thesis.nls"
 
 \renewcommand{\nomname}{Abbreviations} % Change title of page from Nomenclature to Abbreviations
-
+% \renewcommand{\nomgroup}[1]{%
+%     \ifthenelse{\equal{#1}{A}}{\item[\textbf{Greek Symbols}]}{%
+%     \ifthenelse{\equal{#1}{B}}{\item[\textbf{Other Variables}]}{}}} 
 %\nomrefpage % to include page numbers after abbrevations
 
 % In the text type "\g" to refer to glossary
@@ -169,7 +169,7 @@
 %\begin{multicols}{2}  % uncomment to have 2 columns
 
 \begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
-
+\setlength{\nomitemsep}{-.5*\parsep}
 \printnomenclature[2 cm] % [] = distance between entry and description
 \label{nom} % target name for links to glossary
 
@@ -184,12 +184,6 @@
 % \listofmyequations
 
 % \listoftables  % print list of tables
-
-%: ----------------------- Acknowledgements ------------------------
-
-% \include{0_frontmatter/acknowledgement} % Use this to include an acknowledgement in the frontmatter
-
-
 
 %: --------------------------------------------------------------
 %:                  MAIN DOCUMENT SECTION
@@ -227,7 +221,7 @@
 
 \include{9_backmatter/summary}
 
-% \include{9_backmatter/acknowledgement}  % Use this to include an acknowledgement in the backmatter
+\include{9_backmatter/acknowledgement}  % Use this to include an acknowledgement in the backmatter
 
 %: ----------------------- bibliography ------------------------
 

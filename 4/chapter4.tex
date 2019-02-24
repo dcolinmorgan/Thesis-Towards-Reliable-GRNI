@@ -39,7 +39,7 @@ Rank is another property worth consideration in the context of network inference
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\linewidth]{4/MYC_Y_weightedDouble_dendrogram.png}
-\caption{\textbf{Abbreviated view of MYC double perturbation angle dendrogram}, as an example indicating independence of gene expression via correlation in dataset.}
+\caption{\textbf{Abbreviated view of MYC double perturbation angle dendrogram}, as an example demonstrating independence of gene expression via correlation in dataset.}
 \label{fig:dend}
 \end{figure}
 
@@ -52,11 +52,11 @@ As we have seen, systems are often riddled with noise, relying on mechanisms to 
 Experimentally, we estimate the \emph{Signal-to-Noise Ratio} (SNR, \cref{eq:SNRl}). of the system assuming normally distributed noise as follows,
 
 \begin{equation}
-	\SNR_{\mY\, \normall} \triangleq \frac{\underline{\sigma}(\bY)}{\sqrt{\chi^{-2}(\gamma,NM)\lambda}},
+	\SNR_{\mY\, \normall} \triangleq \frac{\underline{\sigma}(\bY)}{\sqrt{\chi^{-2}(1-\alpha,NM)\lambda}},
   \label{eq:SNRl}
 \end{equation}
 
-where $\underline{\sigma}$ represents the smallest non-zero singular value, $\normall$ the normal distribution with mean $\mu$, variance $\lambda$ and $\chi^{-2}(\gamma,NM)$ is the inverse chi-square distribution with \emph{NM} ($genes \times experiments$) degrees of freedom at significance level $\gamma$ as defined in the supplement to \textbf{Paper I}.
+where $\underline{\sigma}$ represents the smallest non-zero singular value, $\normall$ the normal distribution with mean $\mu$, variance $\lambda$ and $\chi^{-2}(1-\alpha,NM)$ is the inverse chi-square distribution with \emph{NM} ($genes \times experiments$) degrees of freedom at significance level $\gamma$ as defined in the supplement to \textbf{Paper I}.
 
 In the case of simulation, wherein a network is initially created, datasets of various data property makeups are created by scaled SNR, a process that defines the E matrix. As such the SNR calculation is more straightforward and exact, where the smallest singular value of Y divided by the largest singular value of E (\cref{eq:SNRt},\cref{fig:SNR}).
 
@@ -77,12 +77,12 @@ In the case of simulation, wherein a network is initially created, datasets of v
 
 \subsubsection{Sparsity}
 \label{sec:spar}
-The field of network inference aims above all else to determine interactions of consequence, those which affect other system constituents rather than laying idle and isolated. As such, the task must consider to which degree to consider a link is deemed valid, to what degree it initiates a response in its neighbor(s), \ie its link weight. This is done in many methods at once, by a sparsity parameter, $\alpha$, which incrementally returns networks of lesser or greater link weight, as determined by the inference method itself, creating a gradient of networks of increasing \textbf{density} (decreasing sparsity) as weaker link weights are forced into inclusion (\cref{fig:confusion}). Finding the optimal sparsity is an ongoing field of research \citep{tjarnberg2013optimal}. Several different methods were employed throughout this work to determine a single, \emph{best} inferred network, often for comparison between methods or for heuristic reasons of biological relevance (\ie generally containing 3-4 links per node \citep{tjarnberg2013optimal}).The number of nonzero elements is limited using methods which place constraints on total link numbers, \eg the L1 norm in LASSO (\cref{eq:linLASSO}, discussed in depth in \cref{sec:reg}) and a cutoff for ordinary least squares LSCO and total least squares (\cref{eq:LSCO},\cref{eq:TLSCO}, and \cref{sec:regress}). Our R shiny web app ``CancerGRN'' (\cref{fig:GSweb}) which employs several network viewers to display networks at each sparsity level, a few crucial network properties, as well as displaying the overlap support plot for those GRN inferred using \emph{NestBoot} via \textbf{Paper II}.
+The field of network inference aims above all else to determine interactions of consequence, those which affect other system constituents rather than laying idle and isolated. As such, the task must consider to which degree to consider a link is deemed valid, to what degree it initiates a response in its neighbor(s), \ie its link weight. This is done in many methods at once, by a sparsity parameter, $\zeta$, which incrementally returns networks of lesser or greater link weight, as determined by the inference method itself, creating a gradient of networks of increasing \textbf{density} (decreasing sparsity) as weaker link weights are forced into inclusion (\cref{fig:confusion}). Finding the optimal sparsity is an ongoing field of research \citep{tjarnberg2013optimal}. Several different methods were employed throughout this work to determine a single, \emph{best} inferred network, often for comparison between methods or for heuristic reasons of biological relevance (\ie generally containing 3-4 links per node \citep{tjarnberg2013optimal}).The number of nonzero elements is limited using methods which place constraints on total link numbers, \eg the L1 norm in LASSO (\cref{eq:linLASSO}, discussed in depth in \cref{sec:reg}) and a cutoff for ordinary least squares LSCO and total least squares (\cref{eq:LSCO},\cref{eq:TLSCO}, and \cref{sec:regress}). Our R shiny web app ``CancerGRN'' (\cref{fig:GSweb}) which employs several network viewers to display networks at each sparsity level, a few crucial network properties, as well as displaying the overlap support plot for those GRN inferred using \emph{NestBoot} via \textbf{Paper II}.
 
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth]{4/NestBoot-Viz2.png}
+\includegraphics[,trim={0 0 0 1cm},clip,width=1\linewidth]{4/NestBoot-Viz2.png}
 \caption{\textbf{Screenshot of Network Viewer CancerGRN Tool.} It offers a network view of variously sparse networks returned from inference, in addition to NestBoot support plots and several general network properties or statistics for comparison. \url{https://dcolin.shinyapps.io/cancerGRN/}, further capabilities demonstrated in \cref{fig:UPGMA}.}
 \label{fig:GSweb}
 \end{figure}
@@ -127,8 +127,8 @@ A link-by-link comparison between networks \cref{fig:dend} suffers from the same
 % \begin{wrapfigure}{Hr}{0.75\textwidth}
 \begin{figure}
 \centering
-\includegraphics[width=.75\linewidth]{4/better_dendrogram.png}
-\caption{\textbf{Example of link-by-link GRN comparison as dendrogram.} Comparing initial LINCS cell line NestBoot GRN from early investigations of \textbf{Paper IV}, as part of expanded UPGMA capability of the cancerGRN tool (\cref{fig:GSweb})}%. Live at \url{https://dcolin.shinyapps.io/cancerGRN/}}
+\includegraphics[width=.75\linewidth]{4/dend.png}
+\caption{\textbf{Example of link-by-link GRN comparison as dendrogram.} Comparing initial LINCS cell line NestBoot GRN from early investigations of \textbf{Paper IV}, in an unrooted, circular configuration, as part of expanded UPGMA capability of the cancerGRN tool (\cref{fig:GSweb})}%. Live at \url{https://dcolin.shinyapps.io/cancerGRN/}}
 \label{fig:UPGMA}%\end{wrapfigure}%{Hr}{0.5\textwidth}
 \end{figure}
 
@@ -181,7 +181,7 @@ When one does not have a true gold standard to measure accuracy against, we devi
 \end{equation}
 %   \frac{||\hat{\bP}_k-(\bF_!k\bP^{-1}_{!k}\bP_k)||^2}{cov(\bp_k)}.
 
-where $\hat{\bP}=(\bF_{!k}\bP^{-1}_{!k}\bP_k)$. Keeping with MCC, wRSS is made per network, and thus to evaluate across all sparsities like AUROC or AUPR the cumulative density can be calculated, summing the wRSS per network type. An explicit description of how this is calculated in a cross-validated way is described in the following Author\'s Note, explicitly walking through the BalanceFitError (BFE) algorithm of \textbf{Paper III}.\\
+where $\hat{\bP}=(\bF_{!k}\bP^{-1}_{!k}\bP_k)$. Keeping with MCC, wRSS is made per network, and thus to evaluate across all sparsities like AUROC or AUPR the cumulative density can be calculated, summing the wRSS per network type. An explicit description of how this is calculated in a cross-validated way is described in the following Author\'s Note, explicitly walking through the BalanceFitError algorithm of \textbf{Paper III}.\\
 
 \vspace*{5mm}
 \fbox{\begin{minipage}{\linewidth}
